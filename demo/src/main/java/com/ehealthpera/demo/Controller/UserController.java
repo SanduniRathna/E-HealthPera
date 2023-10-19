@@ -20,12 +20,12 @@ public class UserController {
         return userService.registerUser(user);
     }
 
-    @PostMapping("/saveUser")
+   /* @PostMapping("/saveUser")
     public UserDTO saveUser(@RequestBody UserDTO userDTO){
         return userService.saveUser(userDTO);
 
     }
-    /*@GetMapping("/getUserById/{ID}")
+    @GetMapping("/getUserById/{ID}")
     public UserDTO getUserById(@PathVariable String ID) {
 
         return userService.getUserById(ID);

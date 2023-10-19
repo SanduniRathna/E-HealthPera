@@ -16,15 +16,13 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    @Autowired
-    private ModelMapper modelMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     public User registerUser(User user){
         //Check if the user email is already taken
-        if(userRepo.findByUserEmail(user.getEmail()) != null){
+        if(userRepo.findByEmail(user.getEmail()) != null){
             throw new RuntimeException("User already exists");
         }
 
@@ -33,11 +31,11 @@ public class UserService {
 
         return userRepo.save(user);
     }
-    public UserDTO saveUser(UserDTO userDTO){
+   // public UserDTO saveUser(UserDTO userDTO){
         //userRepo.save(new User(userDTO.getId()));
 //        userRepo.save(modelMapper.map(userDTO, User.class));
-        return userDTO;
-    }
+       // return userDTO;
+   // }
 
 
 }
