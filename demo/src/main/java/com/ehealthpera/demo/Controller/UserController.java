@@ -15,6 +15,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping("/signup")
+    public User userSignUp(@RequestBody User user){
+        return userService.registerUser(user);
+    }
+
     @PostMapping("/saveUser")
     public UserDTO saveUser(@RequestBody UserDTO userDTO){
         return userService.saveUser(userDTO);

@@ -1,9 +1,11 @@
 package com.ehealthpera.demo.Service;
 
 import com.ehealthpera.demo.Dto.UserDTO;
+import com.ehealthpera.demo.Entity.User;
 import com.ehealthpera.demo.Repository.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +20,7 @@ public class UserService {
     private ModelMapper modelMapper;
 
     @Autowired
-    private PasswordEncorder passwordEncorder;
+    private PasswordEncoder passwordEncoder;
 
     public User registerUser(User user){
         //Check if the user email is already taken
@@ -27,7 +29,7 @@ public class UserService {
         }
 
         //Encrypt the user's password before saving it
-        user.setPassword(passwordEncorder.encode(user.getPAssword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return userRepo.save(user);
     }
