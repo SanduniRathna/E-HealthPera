@@ -6,6 +6,8 @@ import com.ehealthpera.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "api/v1/user/")
 @CrossOrigin
@@ -16,10 +18,15 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/signup")
-    public User userSignUp(@RequestBody User user){
-        return userService.registerUser(user);
+    public String userSignUp(@RequestBody UserDTO userDTO){
+        return userService.signupNewUser(userDTO);
     }
 
+    //get all users
+    @GetMapping("/getallusers")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
    /* @PostMapping("/saveUser")
     public UserDTO saveUser(@RequestBody UserDTO userDTO){
         return userService.saveUser(userDTO);
