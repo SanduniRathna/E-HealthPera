@@ -1,6 +1,6 @@
 package com.ehealthpera.demo.Repository;
 
-import com.ehealthpera.demo.Entity.MedicineRecord;
+//import com.ehealthpera.demo.Entity.MedicineRecord;
 import com.ehealthpera.demo.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,8 +26,8 @@ public interface UserRepo extends JpaRepository<User,String> {
     User getUserById(String Id);
 
     //find all medicine details by id
-    @Query("SELECT u FROM studentMedicine u WHERE u.id=:id")
-    List<MedicineRecord> findAllMedicineDetailsByID(@Param("id") String id);
+    //@Query("SELECT u FROM studentMedicine u WHERE u.id=:id")
+    //List<MedicineRecord> findAllMedicineDetailsByID(@Param("id") String id);
 
     //find medicine details by id and date
 

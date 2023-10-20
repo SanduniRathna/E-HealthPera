@@ -1,4 +1,4 @@
-package com.ehealthpera.demo.Entity;
+/*package com.ehealthpera.demo.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,3 +24,5 @@ public class MedicineRecord {
     private String medicineList;
 
 }
+
+ */
