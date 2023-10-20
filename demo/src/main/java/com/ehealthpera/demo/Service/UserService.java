@@ -1,41 +1,18 @@
 package com.ehealthpera.demo.Service;
 
+import com.ehealthpera.demo.Dto.LoginDTO;
 import com.ehealthpera.demo.Dto.UserDTO;
 import com.ehealthpera.demo.Entity.User;
-import com.ehealthpera.demo.Repository.UserRepo;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.ehealthpera.demo.Service.response.LoginResponse;
 
+import java.util.List;
 
-@Service
-@Transactional
-public class UserService {
-    @Autowired
-    private UserRepo userRepo;
+public interface UserService {
+    //user sing up service method
+    public String signupNewUser(UserDTO userDTO);
+    //get all users service method
+    public List<User> getAllUsers();
 
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    public User registerUser(User user){
-        //Check if the user email is already taken
-        if(userRepo.findByEmail(user.getEmail()) != null){
-            throw new RuntimeException("User already exists");
-        }
-
-        //Encrypt the user's password before saving it
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        return userRepo.save(user);
-    }
-   // public UserDTO saveUser(UserDTO userDTO){
-        //userRepo.save(new User(userDTO.getId()));
-//        userRepo.save(modelMapper.map(userDTO, User.class));
-       // return userDTO;
-   // }
-
-
+    //login service method
+    public LoginResponse loginUser(LoginDTO loginDTO);
 }

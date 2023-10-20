@@ -21,7 +21,7 @@ public class UserDTO {
     @NotEmpty(message="National ID can not be empty!")
     private String nationalId;
 
-    private int phoneNumber;
+    private String phoneNumber;
 
 
 }
