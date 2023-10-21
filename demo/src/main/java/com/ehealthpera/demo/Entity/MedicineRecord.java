@@ -1,4 +1,4 @@
-/*package com.ehealthpera.demo.Entity;
+package com.ehealthpera.demo.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,23 +6,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
-@Entity(name="studentMedicine")
+@Entity
+@Table(name="studentMedicine")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class MedicineRecord {
+
+    @EmbeddedId
+    private MedicineId medicineId;
+
     @ManyToOne
-    @Id
-    @JoinColumn(name="id")
-    private String id;
+    @JoinColumn(name="id",insertable = false,updatable = false)
+    private User user;
 
-    @Column(name="date")
-    private Date date;
+    @Column(name="medicineList")
+    private List<String> medicineList;
 
-    @Column(name="medicine_list", length = 2000)
-    private String medicineList;
 
 }
 
- */
+

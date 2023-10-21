@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/v1/user/")
+@RequestMapping("api/v1/user")
 @CrossOrigin
 
 public class UserController {
@@ -32,21 +32,18 @@ public class UserController {
     }
 
     //user Login
-    @PostMapping("/login")
+    @PostMapping("login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
         LoginResponse loginResponse=userService.loginUser(loginDTO);
         return ResponseEntity.ok(loginResponse);
     }
-   /* @PostMapping("/saveUser")
-    public UserDTO saveUser(@RequestBody UserDTO userDTO){
-        return userService.saveUser(userDTO);
 
-    }
+
     @GetMapping("/getUserById/{ID}")
-    public UserDTO getUserById(@PathVariable String ID) {
+    public User getUserById(@PathVariable String ID) {
 
         return userService.getUserById(ID);
-    }*/
+    }
 
 
 }

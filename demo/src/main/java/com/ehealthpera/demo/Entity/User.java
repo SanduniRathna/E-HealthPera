@@ -1,13 +1,12 @@
 package com.ehealthpera.demo.Entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -34,4 +33,16 @@ public class User {
     @Column(name="phone_number",nullable = false)
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
+    private List<MedicineRecord> medicineRecords;
+
+    //signup constructor
+    public User(String id, String name, String email, String password, String nationalId, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.nationalId = nationalId;
+        this.phoneNumber = phoneNumber;
+    }
 }

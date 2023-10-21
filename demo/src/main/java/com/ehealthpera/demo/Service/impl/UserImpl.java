@@ -8,10 +8,11 @@ import com.ehealthpera.demo.Service.UserService;
 import com.ehealthpera.demo.Service.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class UserImpl implements UserService {
     @Autowired
     public PasswordEncoder passwordEncoder;
@@ -21,7 +22,7 @@ public class UserImpl implements UserService {
 
     //sign up method
     @Override
-    public String signupNewUser( UserDTO userDTO){
+    public String signupNewUser(UserDTO userDTO){
         User user = new User(
                 userDTO.getId(),
                 userDTO.getName(),
@@ -39,6 +40,12 @@ public class UserImpl implements UserService {
     @Override
     public List<User> getAllUsers() {
         return userRepo.findAll();
+    }
+
+    //get user searching id method
+    @Override
+    public User getUserById(String id){
+        return userRepo.getUserById(id);
     }
 
     //login method

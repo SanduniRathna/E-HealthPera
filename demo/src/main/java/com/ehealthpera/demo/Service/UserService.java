@@ -9,10 +9,12 @@ import java.util.List;
 
 public interface UserService {
     //user sing up service method
-    public String signupNewUser(UserDTO userDTO);
+    String signupNewUser(UserDTO userDTO);
     //get all users service method
-    public List<User> getAllUsers();
+    List<User> getAllUsers();
+    //get user by search user id
+    User getUserById(String id);
 
     //login service method
-    public LoginResponse loginUser(LoginDTO loginDTO);
+    LoginResponse loginUser(LoginDTO loginDTO);
 }
