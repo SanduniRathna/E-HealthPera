@@ -1,11 +1,12 @@
 package com.ehealthpera.demo.Entity;
 
+import com.ehealthpera.demo.Dto.MedicineIdDTO;
+import com.ehealthpera.demo.Entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,8 @@ import java.util.List;
 public class MedicineRecord {
 
     @EmbeddedId
-    private MedicineId medicineId;
+    @Id
+    private MedicineIdDTO medicineId;
 
     @ManyToOne
     @JoinColumn(name="id",insertable = false,updatable = false)
@@ -25,7 +27,17 @@ public class MedicineRecord {
     @Column(name="medicineList")
     private List<String> medicineList;
 
+    @Column(name = "give-medicine")
+    private boolean pharmacyGive;
 
+    //constructor for doctor create medicine records
+
+
+    public MedicineRecord(MedicineIdDTO medicineId, User user, List<String> medicineList) {
+        this.medicineId = medicineId;
+        this.user=user;
+        this.medicineList = medicineList;
+    }
 }
 
 
