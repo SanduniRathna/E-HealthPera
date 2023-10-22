@@ -22,11 +22,18 @@ public class UserController {
 
     @PostMapping("/signup")
     public String userSignUp(@RequestBody UserDTO userDTO){
-        return userService.signupNewUser(userDTO);
+
+        String emailCheck="pdn.ac.lk";
+        if(userDTO.getEmail().contains(emailCheck)){
+            return userService.signupNewUser(userDTO);
+        }else{
+            return "Email not valid";
+
+        }
     }
 
     //get all users
-    @GetMapping("/getallusers")
+    @GetMapping("/get-all-users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
