@@ -1,4 +1,4 @@
-package com.ehealthpera.demo.Entity;
+/*package com.ehealthpera.demo.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,11 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "hospitalizedDetails")
 public class HospitalizedDetails {
-    @Id
-    @Column(name = "enrolmentNumber")
-    private String enrolmentNumber;
 
-    @Column(name = "condition")
-    private String conditions;
 
 }
+*/

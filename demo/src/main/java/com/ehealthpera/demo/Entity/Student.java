@@ -4,10 +4,7 @@ import com.ehealthpera.demo.enums.FoodHabits;
 import com.ehealthpera.demo.enums.MaritalStatus;
 import com.ehealthpera.demo.enums.Nationality;
 import com.ehealthpera.demo.enums.Sex;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -62,5 +59,8 @@ public class Student {
     private String emergencyPersonAddress;
     private String emergencyPhoneNumber;
     private boolean wasCovidVaccinate;
+
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<Siblings> siblings;
 
 }

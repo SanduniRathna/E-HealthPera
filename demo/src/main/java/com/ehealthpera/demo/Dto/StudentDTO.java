@@ -1,5 +1,6 @@
 package com.ehealthpera.demo.Dto;
 
+import com.ehealthpera.demo.Entity.Siblings;
 import com.ehealthpera.demo.enums.FoodHabits;
 import com.ehealthpera.demo.enums.MaritalStatus;
 import com.ehealthpera.demo.enums.Nationality;
@@ -41,6 +42,7 @@ public class StudentDTO {
     private String emergencyPersonAddress;
     private String emergencyPhoneNumber;
     private boolean wasCovidVaccinate;
+    private List<Siblings> siblings;
 
 
 }
