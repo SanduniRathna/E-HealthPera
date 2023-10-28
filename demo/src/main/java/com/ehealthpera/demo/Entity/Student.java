@@ -1,5 +1,6 @@
 package com.ehealthpera.demo.Entity;
 
+import com.ehealthpera.demo.Entity.medicineEntity.MedicineRecord;
 import com.ehealthpera.demo.enums.FoodHabits;
 import com.ehealthpera.demo.enums.MaritalStatus;
 import com.ehealthpera.demo.enums.Nationality;
@@ -97,5 +98,9 @@ public class Student {
     private IfFatherDead ifFatherDead;
     @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
     private IfMotherDead ifMotherDead;
+
+    //create medicine record
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<MedicineRecord> medicineRecordList;
 
 }

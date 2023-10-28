@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @EnableJpaRepositories
 public interface StudentRepo extends JpaRepository<Student,String> {
+    Long countByEnrolmentNumber(String enrolmentNumber);
+    Student findByEnrolmentNumber(String enrolmentNumber);
 }
