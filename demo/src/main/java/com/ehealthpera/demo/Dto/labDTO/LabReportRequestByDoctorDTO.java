@@ -5,13 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class LabReportDTO {
-    private String labNumber;
+public class LabReportRequestByDoctorDTO {
     private String enrolmentNumber;
-    private String requestedBy;
-    private byte[] reportFile;
     private LabReportType labReportType;
+    private String requestedBy;
 }

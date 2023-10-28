@@ -1,6 +1,5 @@
 package com.ehealthpera.demo.Entity.laboratoryEntity;
 
-import com.ehealthpera.demo.Entity.Student;
 import com.ehealthpera.demo.enums.LabReportType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,23 +13,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "labReports")
-public class LabReport {
+@Table(name = "labReportRequest")
+public class LabReportRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "labReportsId")
-    private Long labReportsId;
-
-    private String labNumber;
+    @Column(name = "labReportRequestId")
+    private Long labReportRequestId;
     private String enrolmentNumber;
+    private LabReportType labReportType;
+    private String requestedBy;
     private LocalDateTime createTime;
     private LocalDate createDate;
-    private String requestedBy;
-    @Lob
-    private byte[] reportFile;
-    private LabReportType labReportType;
+    private boolean sendReport;
+    private LocalDateTime doneTime;
+    private LocalDate doneDate;
 
-    /*@ManyToOne
-    @JoinColumn(name = "enrolmentNumber")
-    private Student student;*/
 }
+

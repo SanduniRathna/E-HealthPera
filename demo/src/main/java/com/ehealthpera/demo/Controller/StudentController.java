@@ -52,8 +52,4 @@ public class StudentController {
         return studentService.getStudentMedicineRecord(enrolmentNumber);
     }
 
-    /* About student Lob report details*/
-
-    //Create a lab report
-
 }
