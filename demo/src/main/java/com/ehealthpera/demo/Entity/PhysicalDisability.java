@@ -16,7 +16,9 @@ public class PhysicalDisability {
     private Long physicalDisabilityId;
 
     private String type;
-    private boolean requireAnyAssistance;
+    private String requireAnyAssistance;
 
-    private String enrolmentNumber;
+    @ManyToOne
+    @JoinColumn(name = "enrolmentNumber")
+    private Student student;
 }

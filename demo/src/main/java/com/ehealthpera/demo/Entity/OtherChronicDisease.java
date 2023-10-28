@@ -1,9 +1,6 @@
-package com.ehealthpera.demo.Entity;
+/*package com.ehealthpera.demo.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,9 +12,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "otherChronicDisease")
 public class OtherChronicDisease {
     @Id
-    @Column(name = "enrolmentNumber")
-    private String enrolmentNumber;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "otherChronicDiseaseId")
+    private Long otherChronicDiseaseId;
 
     private String name;
     private String description;
-}
+
+}*/

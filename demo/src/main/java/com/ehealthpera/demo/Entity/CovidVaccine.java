@@ -1,9 +1,6 @@
 package com.ehealthpera.demo.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,11 +15,16 @@ import java.util.List;
 @Table(name = "covidVaccine")
 public class CovidVaccine {
     @Id
-    @Column(name = "enrolmentNumber")
-    private String enrolmentNumber;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "covidVaccineId")
+    private Long covidVaccineId;
 
     private int dose;
     private String vaccineName;
     private Date dateOfVaccination;
+
+    @ManyToOne
+    @JoinColumn(name = "enrolmentNumber")
+    private Student student;
 
 }

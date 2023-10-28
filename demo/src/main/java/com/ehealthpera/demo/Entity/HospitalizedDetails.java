@@ -1,12 +1,11 @@
-/*package com.ehealthpera.demo.Entity;
+package com.ehealthpera.demo.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -14,7 +13,15 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "hospitalizedDetails")
 public class HospitalizedDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "hospitalizedDetailsId")
+    private Long hospitalizedDetailsId;
+    private Date date;
+    private String condition;
 
+    @ManyToOne
+    @JoinColumn(name = "enrolmentNumber")
+    private Student student;
 
 }
-*/

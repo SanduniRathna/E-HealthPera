@@ -1,4 +1,4 @@
-package com.ehealthpera.demo.Entity;
+/*package com.ehealthpera.demo.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,4 +19,4 @@ public class Assistance {
     private String enrolmentNumber;
 
     private String description;
-}
+}*/

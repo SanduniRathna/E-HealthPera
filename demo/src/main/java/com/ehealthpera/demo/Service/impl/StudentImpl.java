@@ -18,44 +18,10 @@ public class StudentImpl {
     @Autowired
     private SiblingsRepo siblingsRepo;
     void studentSignUp(StudentDTO studentDTO) {
-        Student student1=new Student(
-                studentDTO.getName(),
-                studentDTO.getEnrolmentNumber(),
-                studentDTO.getNationalId(),
-                studentDTO.getAlIndexNumber(),
-                studentDTO.getBirthDate(),
-                studentDTO.getSex(),
-                studentDTO.getNationality(),
-                studentDTO.getMaritalStatus(),
-                studentDTO.getAddress(),
-                studentDTO.getOlSchoolName(),
-                studentDTO.getAlSchoolName(),
-                studentDTO.getExtraCurricularActivities(),
-                studentDTO.getFoodHabits(),
-                studentDTO.getMotherOccupation(),
-                studentDTO.getFatherOccupation(),
-                studentDTO.getNumberOfSiblings(),
-                studentDTO.isHospitalized(),
-                studentDTO.isUndergoneMajorSurgery(),
-                studentDTO.isChronicDisease(),
-                studentDTO.isPhysicalDisability(),
-                studentDTO.isHavingAllergyToFood(),
-                studentDTO.isHavingAllergyToDrugs(),
-                studentDTO.getPersonToBeEmergency(),
-                studentDTO.getEmergencyPersonAddress(),
-                studentDTO.getEmergencyPhoneNumber(),
-                studentDTO.isWasCovidVaccinate(),
-                studentDTO.getSiblings()
-        );
+        Student student1=new Student();
 
         //get siblings data to array
 
-        JSONObject
-        if(studentDTO.getNumberOfSiblings()>0){
-            Siblings siblings1=new Siblings();
-            siblings1.setSiblingsName(studentDTO.getSiblings().);
-            siblingsRepo.save()
-        }
 
     }
 }

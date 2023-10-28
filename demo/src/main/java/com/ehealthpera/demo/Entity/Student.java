@@ -60,7 +60,42 @@ public class Student {
     private String emergencyPhoneNumber;
     private boolean wasCovidVaccinate;
 
+    //get siblings details
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<Siblings> siblings;
+
+    //get physical disability details
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<PhysicalDisability> physicalDisabilityList;
+
+    //get chronic disease details
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<ChronicDisease> chronicDiseaseList;
+
+    //get covid vaccination details
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<CovidVaccine> covidVaccineList;
+
+    //get drug allergy details
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<DrugAllergy> drugAllergyList;
+
+    //get food allergy details
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<FoodAllergy> foodAllergyList;
+
+    //get surgery details
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<SurgeryDetails> surgeryDetailsList;
+
+    //get hospitalized details
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<HospitalizedDetails> hospitalizedDetailsList;
+
+    //when mother or father dead get details
+    @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
+    private IfFatherDead ifFatherDead;
+    @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
+    private IfMotherDead ifMotherDead;
 
 }

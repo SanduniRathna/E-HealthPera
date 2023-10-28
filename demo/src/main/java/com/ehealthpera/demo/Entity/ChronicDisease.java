@@ -1,12 +1,11 @@
 package com.ehealthpera.demo.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -15,8 +14,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "chronicDisease")
 public class ChronicDisease {
     @Id
-    @Column(name = "enrolmentNumber")
-    private String enrolmentNumber;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "chronicDiseaseId")
+    private Long chronicDiseaseId;
     private boolean diabetesMellitus;
     private boolean bronchialAsthma;
     private boolean mentalIllness;
@@ -24,6 +24,6 @@ public class ChronicDisease {
     private boolean arthritis;
     private boolean heartDiseases;
     private boolean eczema;
-    private boolean other;
+    private List<String> other;
 
 }
