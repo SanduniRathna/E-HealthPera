@@ -1,4 +1,4 @@
-package com.ehealthpera.demo.Entity.medicalEntity;
+/*package com.ehealthpera.demo.Entity.medicalEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "medicalRecords")
 public class MedicalRecord {
-}
+
+}*/

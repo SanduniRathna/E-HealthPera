@@ -33,16 +33,8 @@ public class User {
     @Column(name="phone_number",nullable = false)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
-    private List<MedicineRecord> medicineRecords;
+
 
     //signup constructor
-    public User(String id, String name, String email, String password, String nationalId, String phoneNumber) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.nationalId = nationalId;
-        this.phoneNumber = phoneNumber;
-    }
+
 }

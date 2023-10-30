@@ -65,6 +65,14 @@ public class StudentImpl implements StudentService{
 
         //get siblings data to table
         if(studentDTO.getNumberOfSiblings()>0){
+            for (SiblingDTO siblingDTO : studentDTO.getSiblings()) {
+                Siblings sibling = new Siblings();
+                sibling.setSiblingsName(siblingDTO.getName());
+                sibling.setSiblingsAge(siblingDTO.getAge());
+                sibling.setStudent(student1);  // Set the student for the sibling
+
+                siblingsList.add(sibling);
+            }
             student1.setSiblings(studentDTO.getSiblings());
         }
         //get hospitalized data to the table

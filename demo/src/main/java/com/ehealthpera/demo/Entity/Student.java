@@ -62,7 +62,7 @@ public class Student {
     private boolean wasCovidVaccinate;
 
     //get siblings details
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,targetEntity = Siblings.class)
     private List<Siblings> siblings;
 
     //get physical disability details

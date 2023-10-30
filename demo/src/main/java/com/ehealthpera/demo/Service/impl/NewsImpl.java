@@ -34,6 +34,6 @@ public class NewsImpl implements NewsService {
 
     //get news
     public List<News> getNews(){
-        return newsRepo.findAllByOrderByPublicationDateDesc();
+        return newsRepo.findAllByOrderByCreateDateDesc();
     }
 }

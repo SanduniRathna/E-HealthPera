@@ -1,4 +1,4 @@
-package com.ehealthpera.demo.Entity.pharmacyEntity;
+/*package com.ehealthpera.demo.Entity.pharmacyEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -13,4 +13,4 @@ import lombok.NoArgsConstructor;
 @Table(name = "medicine")
 public class Medicine {
 
-}
+}*/

@@ -18,7 +18,7 @@ public class HospitalizedDetails {
     @Column(name = "hospitalizedDetailsId")
     private Long hospitalizedDetailsId;
     private Date date;
-    private String condition;
+    private String healthCondition;
 
     @ManyToOne
     @JoinColumn(name = "enrolmentNumber")
