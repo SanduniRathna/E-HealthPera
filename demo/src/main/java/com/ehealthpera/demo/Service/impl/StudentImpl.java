@@ -1,7 +1,11 @@
 package com.ehealthpera.demo.Service.impl;
 
+import com.ehealthpera.demo.Dto.SiblingsDTO;
 import com.ehealthpera.demo.Dto.StudentDTO;
 import com.ehealthpera.demo.Dto.medicineRecordDTO.MedicineRecordDTO;
+import com.ehealthpera.demo.Entity.CovidVaccine;
+import com.ehealthpera.demo.Entity.HospitalizedDetails;
+import com.ehealthpera.demo.Entity.Siblings;
 import com.ehealthpera.demo.Entity.Student;
 import com.ehealthpera.demo.Entity.medicineEntity.MedicineRecord;
 import com.ehealthpera.demo.Repository.MedicineRecordRepo;
@@ -12,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class StudentImpl implements StudentService{
@@ -65,19 +71,29 @@ public class StudentImpl implements StudentService{
 
         //get siblings data to table
         if(studentDTO.getNumberOfSiblings()>0){
-            for (SiblingDTO siblingDTO : studentDTO.getSiblings()) {
-                Siblings sibling = new Siblings();
-                sibling.setSiblingsName(siblingDTO.getName());
-                sibling.setSiblingsAge(siblingDTO.getAge());
-                sibling.setStudent(student1);  // Set the student for the sibling
+            List<Siblings> siblings=new ArrayList<>();
+            for(Siblings siblingsDTO:studentDTO.getSiblings()){
+                Siblings siblings1 = new Siblings();
+                siblings1.setSiblingsName(siblingsDTO.getSiblingsName());
+                siblings1.setSiblingsAge(siblingsDTO.getSiblingsAge());
+                siblings1.setStudent(student1);
+                siblings.add(siblings1);
 
-                siblingsList.add(sibling);
             }
-            student1.setSiblings(studentDTO.getSiblings());
+            //save siblings data to student profile
+            student1.setSiblings(siblings);
         }
         //get hospitalized data to the table
         if(studentDTO.isHospitalized()){
-            student1.setHospitalizedDetailsList(studentDTO.getHospitalizedDetailsList());
+            List<HospitalizedDetails> hospitalizedDetailsList=new ArrayList<>();
+            for(HospitalizedDetails hospitalizedDetails:studentDTO.getHospitalizedDetailsList()){
+                HospitalizedDetails hospitalizedDetails1=new HospitalizedDetails();
+                hospitalizedDetails1.setDate(hospitalizedDetails.getDate());
+                hospitalizedDetails1.setHealthCondition(hospitalizedDetails.getHealthCondition());
+                hospitalizedDetails1.setStudent(student1);
+                hospitalizedDetailsList.add(hospitalizedDetails1);
+            }
+            student1.setHospitalizedDetailsList(hospitalizedDetailsList);
         }
         //get Surgery details
         if(studentDTO.isUndergoneMajorSurgery()){
@@ -97,7 +113,16 @@ public class StudentImpl implements StudentService{
         }
         //get covid vaccination details
         if(studentDTO.isWasCovidVaccinate()){
-            student1.setCovidVaccineList(studentDTO.getCovidVaccineList());
+            List<CovidVaccine> covidVaccineList= new ArrayList<>();
+            for(CovidVaccine covidVaccine:studentDTO.getCovidVaccineList()){
+                CovidVaccine covidVaccine1=new CovidVaccine();
+                covidVaccine1.setDose(covidVaccine.getDose());
+                covidVaccine1.setVaccineName(covidVaccine.getVaccineName());
+                covidVaccine1.setDateOfVaccination(covidVaccine.getDateOfVaccination());
+                covidVaccine1.setStudent(student1);
+                covidVaccineList.add(covidVaccine1);
+            }
+            student1.setCovidVaccineList(covidVaccineList);
         }
         studentRepo.save(student1);
 

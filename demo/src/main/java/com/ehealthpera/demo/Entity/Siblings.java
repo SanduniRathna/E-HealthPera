@@ -19,6 +19,6 @@ public class Siblings {
     private int siblingsAge;
 
     @ManyToOne
-    @JoinColumn(name = "enrolmentNumber")
+    @JoinColumn(name = "studentEnrolmentNumber")
     private Student student;
 }

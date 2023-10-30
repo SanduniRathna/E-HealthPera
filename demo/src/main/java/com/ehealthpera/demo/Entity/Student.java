@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class Student {
     private boolean wasCovidVaccinate;
 
     //get siblings details
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,targetEntity = Siblings.class)
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<Siblings> siblings;
 
     //get physical disability details
