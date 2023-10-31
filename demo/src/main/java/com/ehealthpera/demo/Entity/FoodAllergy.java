@@ -18,7 +18,7 @@ public class FoodAllergy {
     @Column(name = "foodAllergyId")
     private Long foodAllergyId;
 
-    private List<String> allergyFoodsName;
+    private String allergyFoodsName;
 
     @ManyToOne
     @JoinColumn(name = "enrolmentNumber")

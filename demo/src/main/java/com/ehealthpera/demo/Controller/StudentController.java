@@ -38,9 +38,10 @@ public class StudentController {
     /* About student medicine records*/
 
     //create medicine record for student
- @PatchMapping("/create-medicine-record")
+ @PostMapping("/create-medicine-record")
     public String createMedicineRecord(@RequestBody MedicineRecordDTO medicineRecordDTO){
         if(studentService.enrolmentNumberIsalreadyTaken(medicineRecordDTO.getEnrolmentNumber())){
+
             return studentService.createMedicineRecord(medicineRecordDTO);
         }else{
             return "No account for this user enrolment number!,Please register first.";

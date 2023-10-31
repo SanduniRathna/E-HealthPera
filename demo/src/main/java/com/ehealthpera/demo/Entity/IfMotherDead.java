@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Table(name="ifMotherDead")
 public class IfMotherDead {
     @Id
-    @Column(name = "enrolmentNumber",nullable = false)
-    private String enrolmentNumber;
+    @Column(name = "ifMotherDeadId",nullable = false)
+    private String ifMotherDeadId;
     @Column(name = "reason")
     private String reason;
 

@@ -24,9 +24,9 @@ public class ChronicDisease {
     private boolean arthritis;
     private boolean heartDiseases;
     private boolean eczema;
-    private List<String> other;
+    private String other;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "enrolmentNumber")
     private Student student;
 

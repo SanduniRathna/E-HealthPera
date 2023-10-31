@@ -45,6 +45,8 @@ public class StudentDTO {
     private String emergencyPersonAddress;
     private String emergencyPhoneNumber;
     private boolean wasCovidVaccinate;
+    private boolean wasMotherDead;
+    private boolean wasFatherDead;
     private List<Siblings> siblings;
     private List<PhysicalDisability> physicalDisabilityList;
     private List<ChronicDisease> chronicDiseaseList;

@@ -61,6 +61,8 @@ public class Student {
     private String emergencyPersonAddress;
     private String emergencyPhoneNumber;
     private boolean wasCovidVaccinate;
+    private boolean wasMotherDead;
+    private boolean wasFatherDead;
 
     //get siblings details
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
@@ -71,8 +73,8 @@ public class Student {
     private List<PhysicalDisability> physicalDisabilityList;
 
     //get chronic disease details
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
-    private List<ChronicDisease> chronicDiseaseList;
+    @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
+    private ChronicDisease chronicDiseaseList;
 
     //get covid vaccination details
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)

@@ -3,10 +3,7 @@ package com.ehealthpera.demo.Service.impl;
 import com.ehealthpera.demo.Dto.SiblingsDTO;
 import com.ehealthpera.demo.Dto.StudentDTO;
 import com.ehealthpera.demo.Dto.medicineRecordDTO.MedicineRecordDTO;
-import com.ehealthpera.demo.Entity.CovidVaccine;
-import com.ehealthpera.demo.Entity.HospitalizedDetails;
-import com.ehealthpera.demo.Entity.Siblings;
-import com.ehealthpera.demo.Entity.Student;
+import com.ehealthpera.demo.Entity.*;
 import com.ehealthpera.demo.Entity.medicineEntity.MedicineRecord;
 import com.ehealthpera.demo.Repository.MedicineRecordRepo;
 import com.ehealthpera.demo.Repository.StudentRepo;
@@ -68,6 +65,8 @@ public class StudentImpl implements StudentService{
         student1.setEmergencyPersonAddress(studentDTO.getEmergencyPersonAddress());
         student1.setEnrolmentNumber(studentDTO.getEnrolmentNumber());
         student1.setWasCovidVaccinate(studentDTO.isWasCovidVaccinate());
+        student1.setWasMotherDead(studentDTO.isWasMotherDead());
+        student1.setWasFatherDead(studentDTO.isWasFatherDead());
 
         //get siblings data to table
         if(studentDTO.getNumberOfSiblings()>0){
@@ -97,19 +96,65 @@ public class StudentImpl implements StudentService{
         }
         //get Surgery details
         if(studentDTO.isUndergoneMajorSurgery()){
-            student1.setSurgeryDetailsList(studentDTO.getSurgeryDetailsList());
+           List<SurgeryDetails> surgeryDetailsList=new ArrayList<>();
+           for(SurgeryDetails surgeryDetails:studentDTO.getSurgeryDetailsList()){
+               SurgeryDetails surgeryDetails1=new SurgeryDetails();
+
+               //save details one by one to the table
+               surgeryDetails1.setDetails(surgeryDetails.getDetails());
+               surgeryDetails1.setStudent(student1);
+               surgeryDetailsList.add(surgeryDetails1);
+           }
+           //set this Surgery details to the student table Surgery details list
+            student1.setSurgeryDetailsList(surgeryDetailsList);
         }
-        //get Chronic Disability details
+        //get physical Disability details
         if(studentDTO.isPhysicalDisability()){
-            student1.setPhysicalDisabilityList(studentDTO.getPhysicalDisabilityList());
+            List<PhysicalDisability> physicalDisabilitiesList=new ArrayList<>();
+
+            //sve all the details to physical disability table
+            for(PhysicalDisability physicalDisability:studentDTO.getPhysicalDisabilityList()){
+
+                PhysicalDisability physicalDisability1=new PhysicalDisability();
+                physicalDisability1.setType(physicalDisability.getType());
+                physicalDisability1.setRequireAnyAssistance(physicalDisability.getRequireAnyAssistance());
+                physicalDisability1.setStudent(student1);
+                physicalDisabilitiesList.add(physicalDisability1);
+            }
+            student1.setPhysicalDisabilityList(physicalDisabilitiesList);
         }
         //get food allergy details
         if(studentDTO.isHavingAllergyToFood()){
-            student1.setFoodAllergyList(studentDTO.getFoodAllergyList());
+            List<FoodAllergy> foodAllergyList=new ArrayList<>();
+
+            for(FoodAllergy foodAllergy:studentDTO.getFoodAllergyList()){
+                FoodAllergy foodAllergy1=new FoodAllergy();
+
+                //get all food allergy details to the food allergy details table one by one
+                foodAllergy1.setAllergyFoodsName(foodAllergy.getAllergyFoodsName());
+                foodAllergy1.setStudent(student1);
+                foodAllergyList.add(foodAllergy1);
+            }
+
+            //set food allergy details in student table
+            student1.setFoodAllergyList(foodAllergyList);
         }
         //get drug allergy details
         if(studentDTO.isHavingAllergyToDrugs()){
-            student1.setDrugAllergyList(studentDTO.getDrugAllergyList());
+            List<DrugAllergy> drugAllergyList=new ArrayList<>();
+
+            for(DrugAllergy drugAllergy:studentDTO.getDrugAllergyList()){
+                DrugAllergy drugAllergy1=new DrugAllergy();
+
+                //set all allergy drugs for drug allergy table one by one
+                drugAllergy1.setAllergyDrugsName(drugAllergy.getAllergyDrugsName());
+                drugAllergy1.setStudent(student1);
+                //save details in the list
+                drugAllergyList.add(drugAllergy1);
+            }
+
+            //save allergy drug details in the student table
+            student1.setDrugAllergyList(drugAllergyList);
         }
         //get covid vaccination details
         if(studentDTO.isWasCovidVaccinate()){
@@ -123,6 +168,18 @@ public class StudentImpl implements StudentService{
                 covidVaccineList.add(covidVaccine1);
             }
             student1.setCovidVaccineList(covidVaccineList);
+        }
+
+        //get chronic disease details
+        if(studentDTO.isChronicDisease()){
+
+
+        }
+
+        //if mother dead
+        if(studentDTO.isWasMotherDead()){
+            IfMotherDead ifMotherDead=studentDTO.getIfMotherDead();
+            ifMotherDead.setStudent(student1);
         }
         studentRepo.save(student1);
 
